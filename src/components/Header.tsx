@@ -6,7 +6,8 @@ import logo from "@/assets/logo.png";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = ["Home", "About", "Services", "Contact"];
+  // Removed "About" and "Contact"
+  const navItems = ["Home", "Services"];
 
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
@@ -19,7 +20,11 @@ const Header = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-3"
           >
-            <img src={logo} alt="Intensify Research" className="h-12 md:h-14 object-contain" />
+            <img
+              src={logo}
+              alt="Intensify Research"
+              className="h-12 md:h-14 object-contain"
+            />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -37,6 +42,8 @@ const Header = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </motion.a>
             ))}
+
+            {/* Get Started stays */}
             <motion.a
               href="#contact"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -75,6 +82,8 @@ const Header = () => {
                 {item}
               </a>
             ))}
+
+            {/* Get Started stays */}
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}

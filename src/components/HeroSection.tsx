@@ -87,7 +87,7 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full mb-4"
             >
               <span className="text-sm font-medium text-primary">
-                India’s Trusted Trading Platform
+                SEBI Registered RA
               </span>
             </motion.div>
 
@@ -143,7 +143,7 @@ const HeroSection = () => {
                 glow-orange hover:glow-orange-intense transition-all duration-300 flex items-center justify-center gap-2
                 hover:scale-105"
               >
-                Get Free Guidance
+                Expert Guidance
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
 
