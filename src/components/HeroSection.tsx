@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, TrendingUp, Target } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 import StockChart from "./StockChart";
 
 const heroTexts = [
@@ -9,24 +9,6 @@ const heroTexts = [
   "Grow Your Wealth With Confidence",
   "Master Technical Analysis",
   "Build Your Investment Portfolio",
-];
-
-const stats = [
-  {
-    icon: TrendingUp,
-    value: "50K+",
-    label: "Active Traders",
-  },
-  {
-    icon: Target,
-    value: "98%",
-    label: "Success Rate",
-  },
-  {
-    icon: TrendingUp,
-    value: "10+ Years",
-    label: "Market Experience",
-  },
 ];
 
 const HeroSection = () => {
@@ -50,49 +32,27 @@ const HeroSection = () => {
     >
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" />
-        <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}
-        />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
-      </div>
-
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage:
-              "linear-gradient(hsl(var(--secondary)/0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--secondary)/0.08) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        />
+        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 py-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* LEFT CONTENT */}
+
+          {/* TEXT (order added safely – no effect) */}
           <motion.div
+            className="order-1 lg:order-1 text-center lg:text-left mt-12 lg:mt-20"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left mt-12 lg:mt-20"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full mb-4"
-            >
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full mb-4">
               <span className="text-sm font-medium text-primary">
                 SEBI Registered RA
               </span>
-            </motion.div>
+            </div>
 
-            {/* Animated Heading */}
-            <div className="min-h-[130px] md:min-h-[150px] mb-4 overflow-hidden flex items-center">
+            <div className="min-h-[130px] md:min-h-[150px] mb-4 overflow-hidden flex items-center justify-center lg:justify-start">
               <AnimatePresence mode="wait">
                 <motion.h1
                   key={currentText}
@@ -100,7 +60,7 @@ const HeroSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -40 }}
                   transition={{ duration: 0.5 }}
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug tracking-tight"
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold"
                 >
                   {(() => {
                     const words = heroTexts[currentText].split(" ");
@@ -109,9 +69,7 @@ const HeroSection = () => {
                     return (
                       <>
                         <span className="text-secondary">{first}</span>{" "}
-                        <span className="text-primary text-glow-orange">
-                          {last}
-                        </span>
+                        <span className="text-primary">{last}</span>
                       </>
                     );
                   })()}
@@ -119,108 +77,57 @@ const HeroSection = () => {
               </AnimatePresence>
             </div>
 
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0"
-            >
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0">
               Join India’s most trusted stock market education platform. Get expert
-              guidance, real-time insights, and proven strategies to build lasting wealth.
-            </motion.p>
+              guidance and real-time insights.
+            </p>
 
-            {/* Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button
                 onClick={scrollToForm}
-                className="group bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg
-                glow-orange hover:glow-orange-intense transition-all duration-300 flex items-center justify-center gap-2
-                hover:scale-105"
+                className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg flex items-center gap-2"
               >
-                Expert Guidance
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Get Guided Today
+                <ArrowRight className="w-5 h-5" />
               </button>
 
               <a
                 href="#features"
-                className="border-2 border-secondary/30 hover:border-primary/50 px-8 py-4 rounded-xl font-semibold
-                text-lg text-secondary transition-all duration-300 flex items-center justify-center gap-2 hover:bg-primary/5"
+                className="border-2 border-secondary/30 px-8 py-4 rounded-xl font-semibold text-lg text-secondary"
               >
                 Explore Services
               </a>
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* RIGHT CHART */}
+          {/* CHART (order added safely – no effect) */}
           <motion.div
+            className="order-2 lg:order-2 relative mt-12 lg:mt-20"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative mt-12 lg:mt-20"
+            transition={{ duration: 0.8 }}
           >
-            <div className="relative bg-navy-gradient border border-secondary/20 rounded-2xl p-6 shadow-xl">
-              <div className="flex items-center justify-between mb-4">
+            <div className="bg-navy-gradient border border-secondary/20 rounded-2xl p-6 shadow-xl">
+              <div className="flex justify-between mb-4">
                 <div>
-                  <h3 className="font-orbitron text-lg font-semibold text-white">
-                    NIFTY 50
-                  </h3>
+                  <h3 className="text-white font-semibold">NIFTY 50</h3>
                   <p className="text-white/70 text-sm">NSE Index</p>
                 </div>
                 <div className="text-right">
-                  <div className="font-orbitron text-2xl font-bold text-stock-green">
+                  <p className="text-stock-green font-bold text-xl">
                     24,677.80
-                  </div>
-                  <div className="text-stock-green text-sm flex items-center gap-1 justify-end">
+                  </p>
+                  <p className="text-stock-green text-sm flex items-center gap-1 justify-end">
                     <TrendingUp className="w-4 h-4" />
-                    +176.45 (+0.72%)
-                  </div>
+                    +176.45
+                  </p>
                 </div>
               </div>
 
               <StockChart />
             </div>
-
-            {/* Floating Cards */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -top-4 -right-4 bg-card border border-primary/20 p-4 rounded-xl shadow-lg"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-stock-green/20 rounded-lg flex items-center justify-center">
-                  <TrendingUp className="w-5 h-5 text-stock-green" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Today's Profit</p>
-                  <p className="font-orbitron font-bold text-stock-green">
-                    +₹24,580
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-              className="absolute -bottom-4 -left-4 bg-card border border-primary/20 p-4 rounded-xl shadow-lg"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-                  <Target className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Target Hit</p>
-                  <p className="font-semibold text-primary">98.5%</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
+
         </div>
       </div>
     </section>

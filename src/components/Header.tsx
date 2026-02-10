@@ -6,91 +6,82 @@ import logo from "@/assets/logo.png";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Removed "About" and "Contact"
-  const navItems = ["Home", "Services"];
+  const handleScroll = (id) => {
+    setIsOpen(false);
+
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    const headerOffset = 96; // height of sticky header
+    const elementPosition = section.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
+
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-3"
-          >
-            <img
-              src={logo}
-              alt="Intensify Research"
-              className="h-12 md:h-14 object-contain"
-            />
+          <motion.div className="flex items-center gap-3">
+            <button onClick={() => handleScroll("home")}>
+              <img
+                src={logo}
+                alt="Intensify Research"
+                className="h-12 md:h-14 object-contain"
+              />
+            </button>
           </motion.div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="text-secondary hover:text-primary transition-colors font-medium relative group"
-              >
-                {item}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </motion.a>
-            ))}
+            <button
+              onClick={() => handleScroll("home")}
+              className="text-secondary hover:text-primary font-medium"
+            >
+              Home
+            </button>
 
-            {/* Get Started stays */}
-            <motion.a
-              href="#contact"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-semibold glow-orange hover:glow-orange-intense transition-all duration-300 hover:scale-105"
+            <button
+              onClick={() => handleScroll("services")}
+              className="text-secondary hover:text-primary font-medium"
+            >
+              Services
+            </button>
+
+            <button
+              onClick={() => handleScroll("contact")}
+              className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-semibold"
             >
               Get Started
-            </motion.a>
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground p-2"
+            className="md:hidden p-2"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X /> : <Menu />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Nav */}
         {isOpen && (
-          <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 pb-4 flex flex-col gap-4"
-          >
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                onClick={() => setIsOpen(false)}
-                className="text-secondary hover:text-primary transition-colors font-medium py-2"
-              >
-                {item}
-              </a>
-            ))}
-
-            {/* Get Started stays */}
-            <a
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-semibold text-center glow-orange"
+          <motion.nav className="md:hidden mt-4 flex flex-col gap-4">
+            <button onClick={() => handleScroll("home")}>Home</button>
+            <button onClick={() => handleScroll("services")}>Services</button>
+            <button
+              onClick={() => handleScroll("contact")}
+              className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg"
             >
               Get Started
-            </a>
+            </button>
           </motion.nav>
         )}
       </div>
