@@ -40,8 +40,7 @@ const Index = () => {
           {/* Hero Section */}
           <HeroSection />
 
-          {/* Lead Form Section */}
-          <LeadForm />
+         
 
 
           {/* Features Section */}
