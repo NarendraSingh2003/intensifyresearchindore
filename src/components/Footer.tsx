@@ -1,70 +1,72 @@
 import { motion } from "framer-motion";
 import {
   Instagram,
-  Youtube,
   Linkedin,
+  Youtube,
   Send,
   Phone,
   Mail,
-  MapPin,
-  TrendingUp,
+  Globe,
 } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
-  const socialLinks = [
-    { icon: Instagram, href: "https://www.instagram.com/intensify.research", label: "Instagram" },
-    { icon: Youtube, href: "https://www.youtube.com/@intensifyresearch", label: "YouTube" },
-    { icon: Linkedin, href: "https://www.linkedin.com/company/intensify-research/", label: "LinkedIn" },
-    { icon: Send, href: "https://t.me/intensifyresearch", label: "Telegram" },
-  ];
-
-  const quickLinks = ["Home", "About Us", "Services", "Contact", "Blog", "FAQ"];
-
-  const services = [
-    "Stock Market Training",
-    "Technical Analysis",
-    "Fundamental Analysis",
-    "Portfolio Management",
-    "Trading Strategies",
-    "Investment Advisory",
-  ];
-
   return (
-    <footer className="bg-secondary border-t border-secondary/50">
+    <footer className="bg-secondary text-white">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-          
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+
           {/* Company Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
           >
-            <img src={logo} alt="Intensify Research" className="h-12 mb-6" />
+            {/* Logo with different color background */}
+            <div className="inline-flex items-center justify-center bg-white rounded-xl p-3 shadow-lg mb-6">
+              <img
+                src={logo}
+                alt="Intensify Research"
+                className="h-10 w-auto"
+              />
+            </div>
 
-            <p className="text-white/80 mb-6 leading-relaxed">
-              India's leading stock market education platform. We empower investors 
-              with knowledge, tools, and strategies to achieve financial success.
+            <p className="text-white/80 text-sm leading-relaxed">
+              <strong>Head Office:</strong> A-1508, Floor No. 15, Mantri Serene,
+              Opp. Mhada Bungalow, Off Film City Road, Dindoshi Goregaon (E),
+              Mumbai – 400065
             </p>
 
-            {/* Social Media */}
-            <div className="flex gap-3">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="w-10 h-10 bg-white/10 hover:bg-primary/30 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                >
-                  <social.icon className="w-5 h-5 text-white/80 group-hover:text-primary transition-colors" />
-                </a>
+            <p className="text-white/80 text-sm mt-4 leading-relaxed">
+              <strong>Branch Office:</strong> 1st Floor 609, Khatiwala Tank,
+              Indore (M.P) – 452014
+            </p>
+          </motion.div>
+
+          {/* Important Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <h4 className="font-semibold text-lg mb-6">Important Links</h4>
+            <ul className="space-y-3 text-white/75 text-sm">
+              {[
+                "Blog",
+                "Services",
+                "Our Process",
+                "Performance",
+                "Terms & Condition",
+              ].map((item, i) => (
+                <li key={i}>
+                  <a href="#" className="hover:text-primary transition">
+                    {item}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </motion.div>
 
           {/* Quick Links */}
@@ -72,140 +74,137 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ delay: 0.2 }}
           >
-            <h4 className="font-bold text-lg mb-6 text-white">Quick Links</h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={`#${link.toLowerCase().replace(" ", "-")}`}
-                    className="text-white/70 hover:text-primary transition-colors inline-flex items-center gap-2 group"
-                  >
-                    <span className="w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-3" />
-                    {link}
+            <h4 className="font-semibold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-3 text-white/75 text-sm">
+              {[
+                "KYC",
+                "About",
+                "Grievance",
+                "Contact Us",
+                "Investor Charter",
+              ].map((item, i) => (
+                <li key={i}>
+                  <a href="#" className="hover:text-primary transition">
+                    {item}
                   </a>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Services */}
+          {/* Support */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ delay: 0.3 }}
           >
-            <h4 className="font-bold text-lg mb-6 text-white">Our Services</h4>
-            <ul className="space-y-3">
-              {services.map((service, index) => (
-                <li key={index}>
-                  <a
-                    href="#services"
-                    className="text-white/70 hover:text-primary transition-colors inline-flex items-center gap-2 group"
-                  >
-                    <span className="w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-3" />
-                    {service}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+            <h4 className="font-semibold text-lg mb-6">Support</h4>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h4 className="font-bold text-lg mb-6 text-white">Contact Us</h4>
-            <ul className="space-y-4">
+            <ul className="space-y-4 text-sm text-white/80">
               {/* Phone */}
-              <li className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm text-white/60">Call Us</p>
-                  <a href="tel:+919876543210" className="font-semibold text-white hover:text-primary transition-colors">
-                    +91 98765 43210
-                  </a>
-                </div>
+              <li className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-primary" />
+                <a
+                  href="tel:07314287574"
+                  className="hover:text-primary transition"
+                >
+                  0731-4287574
+                </a>
               </li>
 
               {/* Email */}
-              <li className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm text-white/60">Email Us</p>
-                  <a href="mailto:info@intensifyresearch.com" className="font-semibold text-white hover:text-primary transition-colors">
-                    info@intensifyresearch.com
-                  </a>
-                </div>
+              <li className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-primary" />
+                <a
+                  href="mailto:support@intensifyresearch.com"
+                  className="hover:text-primary transition"
+                >
+                  support@intensifyresearch.com
+                </a>
               </li>
 
-              {/* Address */}
-              <li className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm text-white/60">Visit Us</p>
-                  <p className="font-semibold text-white">
-                    Indore, Madhya Pradesh, India
-                  </p>
-                </div>
+              {/* Website */}
+              <li className="flex items-center gap-3">
+                <Globe className="w-5 h-5 text-primary" />
+                <a
+                  href="https://www.intensifyresearch.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition"
+                >
+                  www.intensifyresearch.com
+                </a>
               </li>
             </ul>
-          </motion.div>
-        </div>
-      </div>
 
-      {/* Closing Statement */}
-      <div className="bg-secondary/80 py-8 border-t border-white/10">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-4"
-          >
-            <TrendingUp className="w-6 h-6 text-primary" />
-            <p className="text-lg md:text-xl font-semibold text-white">
-              "Right Knowledge Turns Small Steps Into{" "}
-              <span className="text-primary text-glow-orange">Big Profits</span> — 
-              Start Today."
-            </p>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="bg-secondary/90 py-6 border-t border-white/10">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/70">
-            <p>© 2024 Intensify Research Services Pvt. Ltd. All rights reserved.</p>
-
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-primary transition-colors">Disclaimer</a>
+            {/* Social Icons */}
+            <div className="flex gap-4 mt-6">
+              {[
+                {
+                  href: "https://www.instagram.com/intensify.research",
+                  Icon: Instagram,
+                },
+                {
+                  href: "https://www.youtube.com/@intensifyresearch",
+                  Icon: Youtube,
+                },
+                {
+                  href: "https://www.linkedin.com/company/intensify-research/",
+                  Icon: Linkedin,
+                },
+                {
+                  href: "https://t.me/intensifyresearch",
+                  Icon: Send,
+                },
+              ].map(({ href, Icon }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-primary flex items-center justify-center hover:bg-primary transition"
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
-          </div>
-
-          {/* Disclaimer */}
-          <div className="mt-6 pt-6 border-t border-white/10">
-            <p className="text-xs text-white/60 text-center leading-relaxed max-w-4xl mx-auto">
-              <strong className="text-white/80">Disclaimer:</strong> Investment in securities market is subject to market risks. 
-              Read all related documents carefully before investing. Registration granted by SEBI and certification from NISM 
-              in no way guarantee performance or returns. Past performance is not indicative of future results.
-            </p>
-          </div>
+          </motion.div>
         </div>
+      </div>
+
+      {/* Divider */}
+      <div className="border-t border-white/20"></div>
+
+      {/* Disclaimer */}
+      <div className="container mx-auto px-4 py-8 text-center text-xs text-white/70 max-w-5xl leading-relaxed">
+        <p>
+          “Investment in securities market are subject to market risks. Read all
+          the related documents carefully before investing.”
+        </p>
+        <p className="mt-3">
+          “Registration granted by SEBI, Membership of BSE and certification from
+          NISM in no way guarantee performance or provide any assurance of
+          returns to investors”
+        </p>
+        <p className="mt-2">
+          ODR Link:
+          <a
+            href="https://smartodr.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary ml-1 hover:underline"
+          >
+            https://smartodr.in/
+          </a>
+        </p>
+      </div>
+
+      {/* Copyright */}
+      <div className="bg-secondary/90 text-center py-4 text-sm text-white/60">
+        © 2024 Intensify Research Services Pvt. Ltd. All rights reserved.
       </div>
     </footer>
   );
